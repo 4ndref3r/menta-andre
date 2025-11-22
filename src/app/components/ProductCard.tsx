@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 
-interface ProductCardProps {
+export interface ProductCardProps {
     nombre: string;
     precio: number;
     imagen: string;

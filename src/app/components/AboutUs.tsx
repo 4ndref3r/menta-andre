@@ -1,5 +1,5 @@
 'use client';
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function AboutUs() {
   return (
@@ -7,11 +7,14 @@ export default function AboutUs() {
       id="sobre-nosotros"
       className="relative w-full min-h-screen bg-gradient-to-b from-blue-900 via-blue-800 to-blue-950 px-10 py-16"
     >
-      {/* Patrón de fondo */}
       <div className="absolute inset-0 bg-[url('/textura-fruits.png')] bg-repeat bg-[length:500px_500px] opacity-40 pointer-events-none"></div>
 
-      {/* Contenido */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
+      <motion.div 
+        initial={{ opacity:0, y:40 }}
+        whileInView={{ opacity:1, y:0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once:false, amount: 0.4 }}
+        className="relative z-10 max-w-4xl mx-auto text-center text-white">
         <h1 className="font-extrabold text-4xl mb-6 drop-shadow-lg">SOBRE NOSOTROS</h1>
         <p className="text-lg mb-12">
           En <span className="text-teal-400 font-semibold">Menta Restobar</span> llevamos 11 años transformando la manera de disfrutar la comida vegetariana.
@@ -33,7 +36,7 @@ export default function AboutUs() {
             Ser un referente gastronómico en comida vegetariana a nivel nacional, impulsando el cambio hacia un mundo más verde y justo, donde la alimentación sea sinónimo de salud, ética y sabor excepcional.
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
-import Image from "next/image";
 import ProductCard, { ProductCardProps } from "./ProductCard";
+import { motion } from "framer-motion";
 
 export default function Productos() {
     const products: ProductCardProps[] = [
@@ -24,15 +24,25 @@ export default function Productos() {
     return (
         <section id="productos" className="relative w-full min-h-screen flex flex-col justify-center bg-gradient-to-b from-cyan-600 via-teal-700 to-teal-800 px-10">
             <div className="absolute inset-0 bg-[url('/textura-fruits.png')] bg-repeat bg-[length:500px_500px] opacity-50 pointer-events-none"></div>
-            <div>
+            <motion.div
+                initial={{opacity:0, y:30}}
+                whileInView={{opacity:1, y:0}}
+                transition={{duration: 0.5}}
+                viewport={{ once: false, amount: 0.3}}
+            >
                 <h1 className="font-bold text-3xl mt-7">NUESTROS PRODUCTOS</h1>
                 <p className="text-white mb-10">Descubre nuestros productos ofertados por Menta</p>
-                <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
+                    viewport={{ once: false }}
+                    className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
                     {products.map((item, index)=> (
                         <ProductCard key={index} {...item} />
                     ))}
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     );
 }
